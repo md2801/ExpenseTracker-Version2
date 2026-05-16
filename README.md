@@ -282,19 +282,19 @@ Admin users have access to the `/admin` route, which shows all registered users,
 
 ## Challenges Faced
 
-- **JWT integration across the stack**
+- **JWT integration across the stack:**
 Getting the token to flow correctly from login through localStorage and then into every API request required careful coordination between the AuthContext, the api.js helper, and the FastAPI `HTTPBearer` dependency. A missing or malformed header produced 401 errors that were initially hard to diagnose.
 
-- **Role-based routing on the frontend**
+- **Role-based routing on the frontend:**
 React Router does not have built-in auth guards, so I had to create wrapper components (`ProtectedRoute`, `AdminRoute`, `PublicRoute`) that check the auth context before deciding what to render. Getting the redirect logic right for all cases — not logged in, logged in but not admin, already logged in visiting the login page — took several iterations.
 
-- **Database relationships and cascade behaviour**
+- **Database relationships and cascade behaviour:**
 Adding `user_id` as a foreign key to the existing expenses table required understanding how SQLAlchemy handles relationships and cascade deletes. I also needed to reconsider how ORM queries were structured to filter by the authenticated user rather than returning all rows.
 
-- **Token expiry and session handling**
+- **Token expiry and session handling:**
 JWTs expire after 24 hours. I had to handle the case where a user's stored token had expired, meaning the API returned a 401. The solution was to detect 401 responses in the `request()` helper, clear localStorage, and let the frontend redirect to the login page automatically.
 
-- **Keeping activity logging consistent**
+- **Keeping activity logging consistent:**
 Every route that modifies data needed a corresponding entry written to `user_activity`. Managing this without duplicating code meant using a small shared helper function inside each route file rather than middleware.
 
 ---
