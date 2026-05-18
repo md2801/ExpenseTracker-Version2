@@ -219,12 +219,14 @@ The React app opens automatically at `http://localhost:3000`.
 
 ## Demo Accounts
 
-These accounts are created by the seed data in `expense_db.sql`:
+The following accounts are included for testing purposes (seeded via `expense_db.sql`):
 
 | Role  | Email                 | Password    |
 |-------|-----------------------|-------------|
 | Admin | admin@example.com     | admin123    |
 | User  | john@example.com      | password123 |
+
+Note: These are demo credentials only. Passwords are hashed in the database using bcrypt and are intended for local development and testing.
 
 ---
 
