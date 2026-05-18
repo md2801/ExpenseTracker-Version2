@@ -65,6 +65,10 @@ The project also served as a practical exercise in connecting a React frontend t
 - Admins can enable or disable user accounts
 - User activity tracking for login, logout, registration, and expense CRUD events
 - Role-based route protection enforced on both the frontend and backend
+- Client-side and server-side form validation, including:
+    - Email format validation (must be a valid email address)
+    - Password requirements (minimum length of 6 characters)
+    - User-friendly error messages for invalid input
 
 ---
 
